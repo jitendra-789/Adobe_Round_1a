@@ -1,0 +1,43 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
+venv/
+env/
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# OS-specific files
+.DS_Store
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+
+# Model files
+*.pt
+*.pth
+*.onnx
+*.safetensors
+
+# Output files
+*.pdf
+*.zip
+*.tar.gz
+
+# VS Code settings
+.vscode/
+
+# Hugging Face cache
+~/.cache/huggingface/
+
+# Ignore data or outputs if stored here
+data/
+outputs/
+
+# Git LFS-tracked files (if configured, though not required here)
+*.bin
