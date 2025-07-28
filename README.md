@@ -132,3 +132,12 @@ AMD64 Docker Compatibility	✅
 	•	✅ Total runtime < 10s per 50-page PDF
 
 ⸻
+
+⸻
+## 👨‍💻 Author
+
+**Jitendra Kolli**  
+Adobe Hackathon 2025 Participant  
+[https://github.com/jitendra-789](https://github.com/jitendra-789)
+
+---
