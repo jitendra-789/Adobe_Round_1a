@@ -1,5 +1,7 @@
 from collections import Counter
 from utils.classifier_utils import HeadingClassifier
+from langdetect import detect, DetectorFactory
+DetectorFactory.seed = 42 
 
 clf = HeadingClassifier("models/heading_classifier.pkl")
 
@@ -77,3 +79,31 @@ def get_title(pages_data):
     first_page = pages_data[0]
     title_candidate = max(first_page, key=lambda x: x["font_size"])
     return title_candidate["text"].strip()
+
+def is_heading_candidate(line):
+    """
+    Heuristic filter for heading-like text with multilingual support.
+    """
+    text = line["text"].strip()
+
+    # 🧩 Existing filters (your current logic)
+    if len(text) < 3:
+        return False
+    if len(text.split()) > 15:
+        return False
+    if not text[0].isupper():
+        return False
+    if text.endswith("."):
+        return False
+
+    # 🌐 Multilingual compatibility (non-breaking)
+    try:
+        lang = detect(text)
+        unsupported_langs = {"ar", "he"}  # Add more if needed
+        if lang in unsupported_langs:
+            return False
+    except:
+        # If language detection fails, fallback to existing logic
+        pass
+
+    return True
