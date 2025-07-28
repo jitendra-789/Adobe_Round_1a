@@ -141,7 +141,7 @@ This solution was collaboratively built as part of the Adobe Hackathon 2025 by T
 
 
 **Jitendra Kolli**
-GitHub: [https://github.com/jitendra-789](jitendra-789)
+: [https://github.com/jitendra-789](jitendra-789)
 
 **Prasanth**
-GitHub: [https://github.com/prasanth1221](prasanth1221)
+: [https://github.com/prasanth1221](prasanth1221)
