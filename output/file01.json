@@ -8,12 +8,12 @@
     },
     {
       "level": "H2",
-      "text": "Name of the Government Servant",
+      "text": "1. \nName of the Government Servant",
       "page": 1
     },
     {
       "level": "H2",
-      "text": "Designation",
+      "text": "2. \nDesignation",
       "page": 1
     },
     {
@@ -28,17 +28,17 @@
     },
     {
       "level": "H2",
-      "text": "PAY + SI + NPA",
+      "text": "4. \nPAY + SI + NPA",
       "page": 1
     },
     {
       "level": "H2",
-      "text": "Whether permanent or temporary",
+      "text": "5. \nWhether permanent or temporary",
       "page": 1
     },
     {
       "level": "H2",
-      "text": "Home Town as recorded in the Service Book",
+      "text": "6. \nHome Town as recorded in the Service Book",
       "page": 1
     },
     {
@@ -83,37 +83,7 @@
     },
     {
       "level": "H2",
-      "text": "10.",
-      "page": 1
-    },
-    {
-      "level": "H2",
-      "text": "Single",
-      "page": 1
-    },
-    {
-      "level": "H2",
-      "text": "rail",
-      "page": 1
-    },
-    {
-      "level": "H2",
-      "text": "fare/bus",
-      "page": 1
-    },
-    {
-      "level": "H2",
-      "text": "fare",
-      "page": 1
-    },
-    {
-      "level": "H2",
-      "text": "from",
-      "page": 1
-    },
-    {
-      "level": "H2",
-      "text": "the",
+      "text": "Single \nrail \nfare/bus \nfare \nfrom \nthe",
       "page": 1
     },
     {
@@ -123,12 +93,12 @@
     },
     {
       "level": "H2",
-      "text": "shortest route.",
+      "text": "10.",
       "page": 1
     },
     {
       "level": "H2",
-      "text": "11.",
+      "text": "shortest route.",
       "page": 1
     },
     {
@@ -138,52 +108,32 @@
     },
     {
       "level": "H2",
-      "text": "S.No",
+      "text": "S.No \nName \nAge \nRelationship \n1. \n2. \n3. \n4.",
       "page": 1
     },
     {
       "level": "H2",
-      "text": "Name",
+      "text": "11.",
       "page": 1
     },
     {
       "level": "H2",
-      "text": "Age",
+      "text": "5. \n6.",
       "page": 1
     },
     {
       "level": "H2",
-      "text": "Relationship",
+      "text": "12. Amount of advance required. \nRs.",
       "page": 1
     },
     {
       "level": "H2",
-      "text": "12. Amount of advance required.",
+      "text": "I declare that the particulars furnished above are true and correct to the best of my knowledge.  I \nundertake to produce the tickets for the outward journey within ten days of receipt of the advance.",
       "page": 1
     },
     {
       "level": "H2",
-      "text": "Rs.",
-      "page": 1
-    },
-    {
-      "level": "H2",
-      "text": "I declare that the particulars furnished above are true and correct to the best of my knowledge.  I",
-      "page": 1
-    },
-    {
-      "level": "H2",
-      "text": "undertake to produce the tickets for the outward journey within ten days of receipt of the advance.",
-      "page": 1
-    },
-    {
-      "level": "H2",
-      "text": "In the event of cancellation of the journey or if I fail to produce the tickets within ten days of receipt of",
-      "page": 1
-    },
-    {
-      "level": "H2",
-      "text": "advance, I undertake to refund the entire advance in one lump sum.",
+      "text": "In the event of cancellation of the journey or if I fail to produce the tickets within ten days of receipt of \nadvance, I undertake to refund the entire advance in one lump sum.",
       "page": 1
     },
     {
