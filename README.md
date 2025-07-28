@@ -134,7 +134,7 @@ AMD64 Docker Compatibility	✅
 ⸻
 
 ⸻
-👨‍💻 Authors
+## 👨‍💻 Authors
 👥 TeamIronMan – Adobe Hackathon 2025
 
 This solution was collaboratively built as part of the Adobe Hackathon 2025 by TeamIronMan 🚀:
