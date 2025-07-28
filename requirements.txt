@@ -1,2 +1,5 @@
-pdfminer.six
-PyMuPDF
+PyMuPDF==1.22.3
+scikit-learn
+joblib
+pandas
+numpy

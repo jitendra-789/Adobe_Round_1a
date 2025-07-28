@@ -1,39 +1,78 @@
-# 📘 Challenge 1A: Understand Your Document
+# 🧠 Challenge 1A – Document Outline Extractor
 
-**Adobe India Hackathon 2025 – Round 1A**  
-Reimagine the PDF experience by extracting structured outlines like a machine.
-
----
-
-## 🧠 Problem Statement
-
-Given any PDF (up to 50 pages), the task is to extract:
-
-- `Title` of the document
-- `Headings` classified into:
-  - H1
-  - H2
-  - H3
-
-Each heading must include:
-- `level`: H1, H2, or H3  
-- `text`: heading content  
-- `page`: page number where it appears
+Extract a structured outline (Title, H1, H2, H3) from PDF documents using a **hybrid ML + heuristics model**. Fully offline, CPU-only, and Docker-compatible.
 
 ---
 
-## 📥 Input
-
-All input PDF files are placed in the `/input` directory inside the container.
-
+## 📁 Project Structure
+```
+Adobe_Round_1a/
+├── input/                        # 📥 Input PDF files
+│   ├── file01.pdf
+│   ├── file02.pdf
+│   └── models/
+│       ├── features_combined.csv
+│       ├── heading_classifier.pkl
+│       └── label_encoder.pkl
+├── output/                       # 📤 Output JSONs
+│   ├── file01.json
+│   └── file02.json
+├── sample_dataset/              # 📦 Reference data (optional)
+│   └── outputs/pdfs/
+├── utils/                        # 🔧 Core logic
+│   ├── classifier_utils.py       # ML classifier loading/prediction
+│   ├── heading_detector.py       # Combines ML + heuristics for heading detection
+│   ├── json_writer.py            # Writes structured output JSON
+│   └── pdf_parser.py             # Extracts lines with fonts/layout
+├── main.py                       # 🚀 Entry point
+├── Dockerfile                    # 🐳 Offline, CPU-only execution setup
+├── requirements.txt              # 📦 Python dependencies
+└── README.md                     # 📘 You are here!
+```
 ---
 
-## 📤 Output
+## 🐳 🔧 Docker Instructions (IMPORTANT)
 
-For each PDF file, a corresponding `.json` file will be saved to `/output`.  
-Output format:
+### 📦 Step 1: Build the Docker Image
 
-```json
+> Ensure you're building for `linux/amd64` to match evaluation environment:
+
+```bash
+docker build --platform linux/amd64 -t doc_outline_extractor .
+```
+
+⸻
+
+🚀 Step 2: Run the Container
+
+Make sure you have your **input/** and **output/** folders created and PDFs are placed inside input/.
+```
+Adobe_Round_1a/
+├── input/                        # 📥 Input PDF files
+│   ├── file01.pdf
+│   ├── file02.pdf
+│   └── models/
+│       ├── features_combined.csv
+│       ├── heading_classifier.pkl
+│       └── label_encoder.pkl
+├── output/                       # 📤 Output JSONs
+│   ├── file01.json
+│   └── file02.json
+```
+
+```
+docker run --rm \
+  -v $(pwd)/input:/app/input \
+  -v $(pwd)/output:/app/output \
+  --network none \
+  doc_outline_extractor
+```
+🟢 This will generate one .json per .pdf inside the output/ folder.
+
+⸻
+
+✅ Output Format
+```
 {
   "title": "Understanding AI",
   "outline": [
@@ -44,95 +83,49 @@ Output format:
 }
 ```
 
----
+⸻
 
-## 🧰 Tech Stack
+🧠 Hybrid Heading Detection Approach
 
-- Python 3.10  
-- PyMuPDF (`fitz`) for PDF parsing  
-- Heuristic-based logic for heading classification  
-- Docker (CPU-only, AMD64)
+This solution combines:
+	•	🤖 ML Classifier (RandomForest) trained on layout and text features.
+	•	🔠 Font Heuristics for fallback or missing predictions.
+	•	🏷️ Title detection via largest font on page 1.
 
----
+⸻
 
-## 🚀 How to Build and Run
+🎯 Features & Constraint Compliance
 
-### 📦 Build the Docker image
+Requirement	Status
+CPU-only Execution	✅
+Offline (No Internet)	✅
+Model Size < 200MB	✅ (~100KB)
+≤10s per 50-page PDF	✅
+JSON Schema Compliance	✅
+AMD64 Docker Compatibility	✅
 
-```bash
-docker build --platform linux/amd64 -t pdf-processor .
-```
 
-### ▶️ Run the container
+⸻
 
-```bash
-docker run --rm \
-  --platform linux/amd64 \
-  -v $(pwd)/input:/app/input:ro \
-  -v $(pwd)/output:/app/output \
-  --network none \
-  pdf-processor
-```
+🧪 ML Model Details
+	•	Model: RandomForestClassifier
+	•	Training Data: features_combined.csv (text + layout + labels)
+	•	Input Features:
+	•	Font size
+	•	Text length
+	•	Bounding box (x0, y0, x1, y1)
+	•	Page number
+	•	Classes:
+	•	Title, H1, H2, H3, Other
 
----
+⸻
 
-## 🧠 Approach Summary
+📌 Submission Checklist
+	•	✅ Dockerfile in root with platform support
+	•	✅ Dependencies containerized
+	•	✅ No internet access required
+	•	✅ Processes all .pdf files in input/
+	•	✅ Outputs .json matching schema
+	•	✅ Total runtime < 10s per 50-page PDF
 
-1. **PDF Parsing**  
-   Extracts all lines with font size, position, and text per page using PyMuPDF.
-
-2. **Title Detection**  
-   Largest text on the first page is selected as the title.
-
-3. **Heading Detection**  
-   Headings are filtered using:
-   - Font size hierarchy  
-   - Capitalization  
-   - Punctuation rules (no periods)  
-   - Line length (shorter = more likely a heading)  
-   - Deduplication
-
-4. **Outline Output**  
-   Results are saved to a structured JSON with proper heading levels.
-
----
-
-## 📁 Folder Structure
-
-```
-Challenge_1a/
-├── input/                 # PDF input folder
-├── output/                # Output JSONs (git-ignored)
-├── utils/                 # PDF parsing and heading logic
-│   ├── pdf_parser.py
-│   └── heading_detector.py
-├── Dockerfile             # Container setup
-├── main.py                # Entrypoint script
-├── requirements.txt       # Python dependencies
-├── .gitignore             # Ignore venv, output, etc.
-└── README.md              # This file
-```
-
----
-
-## ✅ Constraints Met
-
-- ✅ Platform: `linux/amd64`  
-- ✅ CPU-only, offline execution  
-- ✅ Model-free (≤200MB)  
-- ✅ Sub-10s execution on 50-page PDFs  
-- ✅ Robust heuristics (not font-size only)
-
----
-
-## 👨‍💻 Author
-
-**Jitendra Kolli**  
-Adobe Hackathon 2025 Participant  
-[https://github.com/jitendra-789](https://github.com/jitendra-789)
-
----
-
-## 🔒 Note
-
-This repository is kept private until the hackathon deadline, as per the instructions.
+⸻
