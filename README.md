@@ -7,27 +7,27 @@ Extract a structured outline (Title, H1, H2, H3) from PDF documents using a **hy
 ## 📁 Project Structure
 ```
 Adobe_Round_1a/
-├── input/                        # 📥 Input PDF files
+├── input/                          # 📥 Input PDF files
 │   ├── file01.pdf
-│   ├── file02.pdf
-│   └── models/
-│       ├── features_combined.csv
-│       ├── heading_classifier.pkl
-│       └── label_encoder.pkl
-├── output/                       # 📤 Output JSONs
+│   └── file02.pdf
+├── output/                         # 📤 Output JSON files
 │   ├── file01.json
 │   └── file02.json
-├── sample_dataset/              # 📦 Reference data (optional)
+├── models/                         # 🤖 Trained ML model & metadata
+│   ├── heading_classifier.pkl
+│   ├── label_encoder.pkl
+│   └── features_combined.csv       # Optional: for inspection
+├── utils/                          # 🔧 Core modules
+│   ├── classifier_utils.py         # Loads model & predicts
+│   ├── heading_detector.py         # Heading classifier + fallback
+│   ├── json_writer.py              # JSON writer
+│   └── pdf_parser.py               # Extracts lines & font data
+├── sample_dataset/                 # Optional references
 │   └── outputs/pdfs/
-├── utils/                        # 🔧 Core logic
-│   ├── classifier_utils.py       # ML classifier loading/prediction
-│   ├── heading_detector.py       # Combines ML + heuristics for heading detection
-│   ├── json_writer.py            # Writes structured output JSON
-│   └── pdf_parser.py             # Extracts lines with fonts/layout
-├── main.py                       # 🚀 Entry point
-├── Dockerfile                    # 🐳 Offline, CPU-only execution setup
-├── requirements.txt              # 📦 Python dependencies
-└── README.md                     # 📘 You are here!
+├── main.py                         # 🚀 Pipeline entry point
+├── Dockerfile                      # 📦 CPU-only docker config
+├── requirements.txt                # 🧰 Python dependencies
+└── README.md                       # 📘 You are here
 ```
 ---
 
@@ -48,16 +48,16 @@ docker build --platform linux/amd64 -t doc_outline_extractor .
 Make sure you have your **input/** and **output/** folders created and PDFs are placed inside input/.
 ```
 Adobe_Round_1a/
-├── input/                        # 📥 Input PDF files
+├── input/                          # 📥 Input PDF files
 │   ├── file01.pdf
-│   ├── file02.pdf
-│   └── models/
-│       ├── features_combined.csv
-│       ├── heading_classifier.pkl
-│       └── label_encoder.pkl
-├── output/                       # 📤 Output JSONs
+│   └── file02.pdf
+├── output/                         # 📤 Output JSON files
 │   ├── file01.json
 │   └── file02.json
+├── models/                         # 🤖 Trained ML model & metadata
+│   ├── heading_classifier.pkl
+│   ├── label_encoder.pkl
+│   └── features_combined.csv 
 ```
 
 ```
