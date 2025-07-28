@@ -60,6 +60,9 @@ Adobe_Round_1a/
 │   └── features_combined.csv 
 ```
 
+**This is the Docker RUN command:**
+
+
 ```
 docker run --rm \
   -v $(pwd)/input:/app/input \
