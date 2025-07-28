@@ -1,6 +1,6 @@
 from collections import Counter
 from utils.classifier_utils import HeadingClassifier
-from langdetect import detect, DetectorFactory
+from langdetect import detect, DetectorFactory #type: ignore
 DetectorFactory.seed = 42 
 
 clf = HeadingClassifier("models/heading_classifier.pkl")
