@@ -92,16 +92,8 @@ docker run --rm \
 
 This solution combines:
 	•	🤖 ML Classifier (RandomForest) trained on layout and text features.
-	•	🔠 Font Heuristics as fallback for resilience across PDF styles.
-	•	🏷️ Title Detection via largest font on Page 1.
-
-⸻
-
-🌐 Multilingual & Complex Layout Support
-	•	✅ Multilingual text support via Unicode-friendly PDF parser.
-	•	✅ Multi-column PDF support through sorted layout-aware parsing.
-	•	✅ Robust line segmentation using bounding box logic.
-	•	✅ Backward-compatible: No changes needed in your existing logic.
+	•	🔠 Font Heuristics for fallback or missing predictions.
+	•	🏷️ Title detection via largest font on page 1.
 
 ⸻
 
