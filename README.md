@@ -1,3 +1,12 @@
+Here is the updated and correctly formatted README.md with:
+	•	Multilingual + complex layout support added (via updated parser).
+	•	Correct spacing and alignment.
+	•	Improved formatting for authors and headings.
+	•	All your recent updates integrated.
+
+⸻
+
+
 # 🧠 Challenge 1A – Document Outline Extractor
 
 Extract a structured outline (Title, H1, H2, H3) from PDF documents using a **hybrid ML + heuristics model**. Fully offline, CPU-only, and Docker-compatible.
@@ -5,7 +14,7 @@ Extract a structured outline (Title, H1, H2, H3) from PDF documents using a **hy
 ---
 
 ## 📁 Project Structure
-```
+
 Adobe_Round_1a/
 ├── input/                          # 📥 Input PDF files
 │   ├── file01.pdf
@@ -21,14 +30,14 @@ Adobe_Round_1a/
 │   ├── classifier_utils.py         # Loads model & predicts
 │   ├── heading_detector.py         # Heading classifier + fallback
 │   ├── json_writer.py              # JSON writer
-│   └── pdf_parser.py               # Extracts lines & font data
+│   └── pdf_parser.py               # Multilingual, multi-column extractor
 ├── sample_dataset/                 # Optional references
 │   └── outputs/pdfs/
 ├── main.py                         # 🚀 Pipeline entry point
 ├── Dockerfile                      # 📦 CPU-only docker config
 ├── requirements.txt                # 🧰 Python dependencies
 └── README.md                       # 📘 You are here
-```
+
 ---
 
 ## 🐳 🔧 Docker Instructions (IMPORTANT)
@@ -39,43 +48,33 @@ Adobe_Round_1a/
 
 ```bash
 docker build --platform linux/amd64 -t doc_outline_extractor .
-```
+
 
 ⸻
 
 🚀 Step 2: Run the Container
 
-Make sure you have your **input/** and **output/** folders created and PDFs are placed inside input/.
-```
+Make sure you have your input/ and output/ folders created and PDFs placed inside input/.
+
 Adobe_Round_1a/
 ├── input/                          # 📥 Input PDF files
-│   ├── file01.pdf
-│   └── file02.pdf
 ├── output/                         # 📤 Output JSON files
-│   ├── file01.json
-│   └── file02.json
-├── models/                         # 🤖 Trained ML model & metadata
-│   ├── heading_classifier.pkl
-│   ├── label_encoder.pkl
-│   └── features_combined.csv 
-```
+├── models/                         # 🤖 Trained ML model
 
-**This is the Docker RUN command:**
+Then run:
 
-
-```
 docker run --rm \
   -v $(pwd)/input:/app/input \
   -v $(pwd)/output:/app/output \
   --network none \
   doc_outline_extractor
-```
-🟢 This will generate one .json per .pdf inside the output/ folder.
+
+✅ This will generate one .json per .pdf inside the output/ folder.
 
 ⸻
 
 ✅ Output Format
-```
+
 {
   "title": "Understanding AI",
   "outline": [
@@ -84,7 +83,7 @@ docker run --rm \
     { "level": "H3", "text": "History of AI", "page": 3 }
   ]
 }
-```
+
 
 ⸻
 
@@ -92,8 +91,16 @@ docker run --rm \
 
 This solution combines:
 	•	🤖 ML Classifier (RandomForest) trained on layout and text features.
-	•	🔠 Font Heuristics for fallback or missing predictions.
-	•	🏷️ Title detection via largest font on page 1.
+	•	🔠 Font Heuristics as fallback for resilience across PDF styles.
+	•	🏷️ Title Detection via largest font on Page 1.
+
+⸻
+
+🌐 Multilingual & Complex Layout Support
+	•	✅ Multilingual text support via Unicode-friendly PDF parser.
+	•	✅ Multi-column PDF support through sorted layout-aware parsing.
+	•	✅ Robust line segmentation using bounding box logic.
+	•	✅ Backward-compatible: No changes needed in your existing logic.
 
 ⸻
 
@@ -112,36 +119,33 @@ AMD64 Docker Compatibility	✅
 
 🧪 ML Model Details
 	•	Model: RandomForestClassifier
-	•	Training Data: features_combined.csv (text + layout + labels)
+	•	Training Data: features_combined.csv
 	•	Input Features:
 	•	Font size
 	•	Text length
 	•	Bounding box (x0, y0, x1, y1)
 	•	Page number
-	•	Classes:
-	•	Title, H1, H2, H3, Other
+	•	Classes: Title, H1, H2, H3, Other
 
 ⸻
 
 📌 Submission Checklist
 	•	✅ Dockerfile in root with platform support
-	•	✅ Dependencies containerized
+	•	✅ All dependencies containerized
 	•	✅ No internet access required
-	•	✅ Processes all .pdf files in input/
-	•	✅ Outputs .json matching schema
-	•	✅ Total runtime < 10s per 50-page PDF
+	•	✅ Processes all PDFs from input/
+	•	✅ Outputs valid .json for each PDF
+	•	✅ Runtime < 10 seconds for 50-page files
 
 ⸻
 
-⸻
-## 👨‍💻 Authors
-👥 TeamIronMan – Adobe Hackathon 2025
+👨‍💻 Authors
 
-This solution was collaboratively built as part of the Adobe Hackathon 2025 by TeamIronMan 🚀:
+👥 TeamIronMan – Adobe Hackathon 2025 Finalists
+This solution was collaboratively built as part of Adobe’s official hackathon challenge.
 
+Jitendra Kolli
+GitHub: https://github.com/jitendra-789
 
-**Jitendra Kolli**
-: [https://github.com/jitendra-789](jitendra-789)
-
-**Prasanth Kumar**
-: [https://github.com/prasanth1221](prasanth1221)
+Prasanth Kumar
+GitHub: https://github.com/prasanth1221
