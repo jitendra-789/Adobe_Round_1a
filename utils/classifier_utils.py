@@ -1,5 +1,5 @@
-import joblib
-import numpy as np
+import joblib #type: ignore
+import numpy as np # type: ignore
 
 class HeadingClassifier:
     def __init__(self, model_path="models/heading_classifier.pkl"):
